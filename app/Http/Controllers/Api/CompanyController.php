@@ -18,6 +18,8 @@ class CompanyController extends Controller
     public function index()
     {
         return CompanyResource::collection(Company::paginate(5));
+    
+       // return response()->json(Company::paginate(5));
     }
 
     /**

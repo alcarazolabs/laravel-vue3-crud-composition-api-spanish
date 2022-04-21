@@ -20,7 +20,7 @@ export default function useCompanies(){
     const getCompanies = async(page) => {
         axios.get('/api/companies?page=' + page)
         .then(response => {
-            companies.value = response.data.data
+            companies.value = response.data;
         })
        
     }

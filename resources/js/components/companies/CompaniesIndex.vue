@@ -18,7 +18,7 @@
             </tr>
          </thead>
          <tbody>
-            <template v-for="item in companies" :key="item.id">
+            <template v-for="item in companies.data" :key="item.id">
              <tr>
                <th scope="row">{{ item.id }}</th>
                 <td>{{ item.name }}</td>
@@ -36,7 +36,7 @@
          </tbody>
    </table>
 
-      <Pagination :data="companies" @pagination-change-page="getCompanies"/> 
+      <Pagination :data="companies" @pagination-change-page="getCompanies"></Pagination> 
 
 
 </template>
