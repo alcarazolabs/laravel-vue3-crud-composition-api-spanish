@@ -15,9 +15,14 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    private $NUM_PAGES = 5;
+    public function index(Request $request)
     {
-        return CompanyResource::collection(Company::paginate(5));
+        $name = $request->name;
+
+        $companies = Company::searchByName($name)->paginate($this->NUM_PAGES)->withQueryString();
+        
+        return CompanyResource::collection($companies);
     
        // return response()->json(Company::paginate(5));
     }

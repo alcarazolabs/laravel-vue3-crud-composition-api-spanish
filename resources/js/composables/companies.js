@@ -8,6 +8,8 @@ export default function useCompanies(){
     const router = useRouter()
     const companies = ref([])
     const company = ref([])
+    //Buscador:
+    const query_name = ref('')
 
     /*
     - Sin paginación
@@ -18,7 +20,7 @@ export default function useCompanies(){
 
     
     const getCompanies = async(page) => {
-        axios.get('/api/companies?page=' + page)
+        axios.get('/api/companies?page=' + page + '&name='+ query_name.value)
         .then(response => {
             companies.value = response.data;
         })
@@ -66,6 +68,7 @@ export default function useCompanies(){
         errors,
         companies,
         company,
+        query_name,
         getCompanies,
         getCompany,
         storeCompany,

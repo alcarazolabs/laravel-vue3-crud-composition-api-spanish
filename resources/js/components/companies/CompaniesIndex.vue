@@ -6,6 +6,16 @@
       <router-link :to="{name: 'companies.create'}" class="btn btn-sm btn-primary">Nuevo</router-link>
    </div>
 
+   <div class="row">
+      <div class="col-md-4">
+         <div class="form-group d-flex">
+            <input type="text" class="form-control" placeholder="Buscar por nombre" v-model="query_name">
+            &nbsp;
+            <button @click="getCompanies" class="btn btn-sm btn-primary">Buscar</button>
+         </div>
+      </div>
+   </div>
+
    <table class="table table-striped table-hover">
          <thead>
             <tr>
@@ -50,7 +60,7 @@ export default {
 
 
    setup(){
-         const {companies, getCompanies, destroyCompany } = useCompanies()
+         const {query_name, companies, getCompanies, destroyCompany } = useCompanies()
 
          onMounted(getCompanies)
 
@@ -65,7 +75,8 @@ export default {
       return {
          companies,
          getCompanies,
-         deleteCompany  
+         deleteCompany,
+         query_name 
 
       }
    }
